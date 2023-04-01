@@ -7,10 +7,10 @@ import csv
 class Operation:
     def __init__(self):
         pass
+
     # Assumptions
     # All years:BE, All inputs: '%m/%d/%Y'
     # Concern: In fact, year may be both AD and BE, Date input can be in different format.
-
     @staticmethod
     def iso_date_converter(date_str, key="date"):
         try:
@@ -22,6 +22,7 @@ class Operation:
         except Exception as e:
             return e
 
+    # Assume that each record has only firstname and lastname
     @staticmethod
     def separate_firstname_lastname(fullname, key=["firstname", "lastname"]):
         arr_name_splitted = fullname.split()
@@ -52,6 +53,8 @@ class MoreOperation(Operation):
             return (key, phonenumber[0:3] + ("*"*5) + phonenumber[-2] + phonenumber[-1])
         else:
             return Exception("Invalid Phone Number")
+
+# Not sure how to make DataSource to receive data from another source.
 
 
 class DataSource:
