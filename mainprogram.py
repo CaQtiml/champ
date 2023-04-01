@@ -37,6 +37,9 @@ class Operation:
     # Does not handle the case like t@gmail.com
     @staticmethod
     def masking_email(email, key="email"):
+        pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+        if re.match(pattern, email) is None:
+            return Exception("Invalid Email")
         splitted_email = email.split("@")
         email_name = splitted_email[0]
         splitted_email[0] = email_name[0] + ("*"*4) + email_name[-1]
@@ -48,6 +51,9 @@ class Operation:
 class MoreOperation(Operation):
     @staticmethod
     def masking_phonenumber(phonenumber, key="phonenumber"):
+        pattern = r'^[\d_\- ]+$'
+        if re.match(pattern, phonenumber) is None:
+            return Exception("Invalid Phone Number")
         phone_digits_only = re.sub(r"\D", "", phonenumber)
         if len(phone_digits_only) == 10:
             return (key, phonenumber[0:3] + ("*"*5) + phonenumber[-2] + phonenumber[-1])
