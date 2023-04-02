@@ -3,3 +3,7 @@
 /good.csv
 /bad.csv
 /__pycache__
+.env
+/data
+/download_test
+/download

@@ -33,3 +33,4 @@ if __name__ == '__main__':
             arr_valid_output.append(dict_cleaned_input_data)
 
     data_source.give_result_csv(arr_valid_output, arr_invalid_output)
+    data_source.upload_csv_to_s3()
