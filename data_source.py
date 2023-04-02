@@ -33,7 +33,7 @@ class DataSource:
 
     def get_data_from_input(self, field_names):
         arr_data = []
-        bucket_path = "/".join(["input", self.input_filename])
+        bucket_path = f"input/{self.input_filename}"
         local_path = "sample.csv"
         self.s3_service.download(bucket_path, local_path)
         with open(local_path, mode='r', encoding='utf8') as csv_file:
